@@ -6,12 +6,11 @@ This repository contains Kubernetes files that will help to setup a development 
 
 ## Requirements
 
-* [Kubernetes](https://kubernetes.io/) 1.24+
+* [Kubernetes](https://kubernetes.io/) 1.25+
 
 ## Runtime platforms
 
-* [kind](https://kind.sigs.k8s.io/) 0.14+
-* [minikube](https://minikube.sigs.k8s.io/docs/) 1.26+
+* [kind](https://kind.sigs.k8s.io/) 0.17+
 
 ## Contributing
 
