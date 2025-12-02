@@ -2,14 +2,35 @@
 
 The following installs and runs the Kubernetes [dashboard](https://github.com/kubernetes/dashboard) application.
 
+It requires [helm](https://github.com/helm/helm/releases) to be installed and in your path. For example
+
+```bash
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
+$ chmod 700 get_helm.sh
+$ ./get_helm.sh
+```
+
+Then install the dashboard by
+
 ``` bash
-kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.0/aio/deploy/alternative.yaml
-kubectl apply -f dashboard-serviceaccount.yaml
-kubectl apply -f dashboard-clusterrolebinding.yaml
-kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
-kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:80
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
+```
+
+Create the admin account
+
+```bash
+kubectl create -f dashboard-serviceaccount.yaml
+kubectl create -f dashboard-clusterrolebinding.yaml
 ```
 
 ## Access
 
-Goto [localhost:8080](http://localhost:8080/) and use the token login
+Get the token
+
+```bash
+kubectl -n kubernetes-dashboard create token admin-user
+```
+
+Goto [localhost:8443](http://localhost:8443/) and use the token login
