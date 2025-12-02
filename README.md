@@ -1,16 +1,16 @@
 # pgopr-k8s: Kubernetes files for the pgopr operator
 
-`pgopr` is a Kubernetes operator that controls a PostgreSQL cluster and related technologies on Kubernetes 1.24+.
+`pgopr` is a Kubernetes operator that controls a PostgreSQL cluster and related technologies on Kubernetes.
 
 This repository contains Kubernetes files that will help to setup a development environment.
 
 ## Requirements
 
-* [Kubernetes](https://kubernetes.io/) 1.25+
+* [Kubernetes](https://kubernetes.io/) 1.34+
 
 ## Runtime platforms
 
-* [kind](https://kind.sigs.k8s.io/) 0.17+
+* [kind](https://kind.sigs.k8s.io/) 0.30+
 
 ## Contributing
 
