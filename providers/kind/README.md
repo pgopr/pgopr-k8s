@@ -1,6 +1,6 @@
 # kind
 
-You will need [kind](https://kind.sigs.k8s.io/) 0.17 or higher.
+You will need [kind](https://kind.sigs.k8s.io/) 0.30 or higher.
 
 Using the latest version is recommended.
 
