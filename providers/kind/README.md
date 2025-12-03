@@ -22,6 +22,20 @@ kind create cluster
 
 ## 1 control-plane with 4 workers
 
+```bash
+sudo sysctl fs.inotify.max_user_watches=524288
+sudo sysctl fs.inotify.max_user_instances=512
+```
+
+You can persist these values in `/etc/sysctl.conf`
+
+```bash
+fs.inotify.max_user_watches = 524288
+fs.inotify.max_user_instances = 512
+```
+
+Then
+
 ``` bash
 kind create cluster --config=kind-cluster.yaml
 ```
